@@ -1,0 +1,33 @@
+
+.img1{
+background-image: url( '../img/bg-showcase-1.jpg');
+
+}
+.img2{
+    background-image: url('../img/bg-showcase-2.jpg');
+
+}
+.img3{
+
+    background-image: url('../img/bg-showcase-3.jpg');
+}
+.menu{
+    margin-top: 15px;
+}
+.menu li {
+    list-style: none;
+    display: inline;
+    padding: 5px 40px 0 10px;
+    
+}
+.menu li a {
+    color: whitesmoke;
+}
+.menu li a:hover{
+    text-decoration: none;
+    font-weight: bold;
+    color: azure;
+}
+.bg-darkblue{
+    background-color: #1f364a;
+}
