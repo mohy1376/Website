@@ -146,13 +146,21 @@ INSTALLED_APPS = (
     'sortedm2m',
     'taggit',
     'mysite',
-    'blog',
+    'aldryn_newsblog',
+    'comment'
+    # 'pinax.comments',
+    # 'threadedcomments',
+    # 'django_comments',
+    
+
+
 )
 
 LANGUAGES = (
     # Customize this
     ('en', gettext('en')),
 )
+COMMENTS_APP = 'threadedcomments'
 
 CMS_LANGUAGES = {
     # Customize this
@@ -177,7 +185,9 @@ CMS_TEMPLATES = (
     ('home.html', 'Home'),
     ('about.html', 'About'),
     ('blog.html', 'Blog'),
-    ('media.html', 'Media')
+    ('media.html', 'Media'),
+    ('portfolio.html', 'Portfolio'),
+
 
 )
 
@@ -205,5 +215,6 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',
     'easy_thumbnails.processors.autocrop',
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
-    'easy_thumbnails.processors.filters'
+    'easy_thumbnails.processors.filters',
+    'easy_thumbnails.processors.background',
 )

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load cms_tags staticfiles %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block header %}
+<section class="asheader  ">
+    <div class="container text-center pt-5">
+        {% placeholder "Search" %}
+    </div>
+</section>
+{% endblock header %}
+
+
+
+{% block content %}
+
+
+
+
+{%endblock%}

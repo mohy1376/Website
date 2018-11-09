@@ -22,7 +22,7 @@
         type="text/css">
 
     <!-- Custom styles for this template -->
-    <link href="{% static 'css/landing-page.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/landing-page.css' %}" rel="stylesheet">
     <link href="{% static 'css/site.css' %}" rel="stylesheet">
 
     {% render_block "css" %}
@@ -33,38 +33,50 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-darkblue static-top">
-        <a class="navbar-brand text-white" href="#">Brand</a>
+        <a class="navbar-brand text-white" href="#">Karaco</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="container">
-            <ul class="menu text-center">
+            <a id=btnSearch class="ml-4 nav-link text-white searchbtn"> <i class="fa fas fa-search "></i> </a>
 
-                {% show_menu 0 100 100 100 %}
+            <div class="container">
+                <ul class="menu text-center">
 
-            </ul>
+                    {% show_menu 0 100 100 100 %}
+
+                </ul>
+            </div>
         </div>
-    </div>
     </nav>
+
+    {% block header %}
+    <section class="asheader  ">
+        <div class="container text-center pt-5">
+            {% placeholder "Search" %}
+        </div>
+    </section>
+    
+    {% endblock header %}
 
     {% block content %}{% endblock content %}
     </div>
 
 
     <!-- Footer -->
-    <footer class="footer bg-light">
+    <footer class="footer bg-darkblue">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
                     <ul class="list-inline mb-2">
                         <li class="list-inline-item">
-                            <a href="#">About</a>
+                            <a href="/en/about">About</a>
                         </li>
                         <li class="list-inline-item">&sdot;</li>
                         <li class="list-inline-item">
-                            <a href="#">Contact</a>
+                            <a href="/en/about/#contact">Contact</a>
                         </li>
                         <li class="list-inline-item">&sdot;</li>
                         <li class="list-inline-item">
@@ -75,13 +87,13 @@
                             <a href="#">Privacy Policy</a>
                         </li>
                     </ul>
-                    <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2018. All Rights Reserved.</p>
+                    <p class="text-white text-muted small mb-4 mb-lg-0">&copy; Designed By Karaco 2018. All Rights Reserved.Proudly Powered By Django</p>
                 </div>
                 <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
                     <ul class="list-inline mb-0">
                         <li class="list-inline-item mr-3">
-                            <a href="#">
-                                <i class="fab fa-facebook fa-2x fa-fw"></i>
+                            <a href="https://linkedin.com/in/mohammad-fahim-945a9b92/">
+                                <i class="fab fa-linkedin fa-2x fa-fw"></i>
                             </a>
                         </li>
                         <li class="list-inline-item mr-3">
@@ -90,8 +102,8 @@
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-instagram fa-2x fa-fw"></i>
+                            <a href="http://t.me/mohy_fahim">
+                                <i class="fab fa-telegram fa-2x fa-fw"></i>
                             </a>
                         </li>
                     </ul>
@@ -100,7 +112,10 @@
         </div>
     </footer>
     <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
+
+    <script src="{% static 'js/jquery-3.3.1.min.js'%}"></script>
+
+    <script src="{% static 'js/site.js'%}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
     {% render_block "js" %}
