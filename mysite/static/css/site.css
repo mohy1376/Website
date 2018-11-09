@@ -1,33 +1,256 @@
-
-.img1{
-background-image: url( '../img/bg-showcase-1.jpg');
-
+body {
+    background-color: #e1e1e1;
 }
-.img2{
+
+.img1 {
+    background-image: url('../img/bg-showcase-1.jpg');
+}
+
+.img2 {
     background-image: url('../img/bg-showcase-2.jpg');
-
 }
-.img3{
 
+.img3 {
     background-image: url('../img/bg-showcase-3.jpg');
 }
-.menu{
+
+.menu {
     margin-top: 15px;
 }
+
 .menu li {
     list-style: none;
     display: inline;
     padding: 5px 40px 0 10px;
-    
 }
+
 .menu li a {
     color: whitesmoke;
 }
-.menu li a:hover{
+
+.menu li a:hover {
     text-decoration: none;
     font-weight: bold;
     color: azure;
 }
-.bg-darkblue{
+
+.bg-darkblue {
     background-color: #1f364a;
+}
+
+.asheader {
+    min-height: 150px;
+    display: none;
+    background-color: #1f364a;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:700);
+#holder {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    background: white;
+    padding: 10px;
+    width: 250px;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-65%);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+}
+
+.button {
+    background: #3D4C53;
+    margin: 20px 0 10px 0 auto;
+    width: 200px;
+    height: 50px;
+    overflow: hidden;
+    text-align: center;
+    transition: .2s;
+    cursor: pointer;
+    border-radius: 3px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, .2);
+}
+
+.btnTwo {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    margin-top: -100px;
+    padding-top: 2px;
+    background: #1f364a;
+    left: -250px;
+    transition: .3s;
+}
+
+.btnText {
+    color: white;
+    transition: .3s;
+    margin-top: 10px;
+}
+
+.btnText a {
+    color: white;
+    font-family: monospace;
+}
+
+.btnText2 {
+    margin-top: 63px;
+    margin-right: -130px;
+    color: #FFF;
+    font-family: monospace;
+}
+
+.button:hover .btnTwo {
+    /*When hovering over .button change .btnTwo*/
+    left: -130px;
+}
+
+.button:hover .btnText {
+    /*When hovering over .button change .btnText*/
+    margin-left: 65px;
+}
+
+.button:active {
+    /*Clicked and held*/
+    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+}
+
+.no-gutters {
+    background-color: #e1e1e1;
+}
+
+.tags {
+    margin-top: 10px !important;
+}
+
+.tags a {
+    color: #3D4C53;
+}
+
+.tags a:hover {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.prev_article li {
+    margin: 0 10px 10px 10px;
+    display: inline;
+    list-style: none;
+    font-family: monospace;
+    font-size: 10 rem;
+}
+
+.prev_article li a:hover {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-control {
+    background-color: #e1e1e1;
+}
+
+
+
+.authorimg {
+    border-radius: 50%;
+}
+
+.authorlink {
+    text-decoration: none;
+    color: #1f364a;
+}
+
+.authorlink:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3D4C53;
+}
+.authorname{
+    font-size: 15px;
+
+}
+#btnSearch{
+    display: none;
+}
+#btnSearch:hover{
+    font-weight: bold;
+    color: #e1e1e1 !important;
+    font-size: 20px;
+}
+footer a{
+ color: white;
+}
+footer a:hover {
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: bold;
+}
+.text-muted:hover{
+    color: whitesmoke !important;
+    font-weight: bold !important;
+}
+.testimonials{
+    background-color: #e1e1e1 !important;
+}
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+.pagination li {
+ display: inline;
+ padding: 10px;
+}
+.pagination{
+    margin: 0;
+}
+.pagination li a{
+    color: whitesmoke; 
+
+}
+.active{
+    color: black;
+}
+.pagination li a:hover{
+text-decoration: none;
+color: #3D4C53;
+font-weight: bold;
 }
