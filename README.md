@@ -36,4 +36,4 @@ python manage.py runserver
 username : admin
 password : admin
 ```
-enjoy and feel free to leave message <3
+enjoy and feel free to leave a message <3
