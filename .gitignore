@@ -107,7 +107,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
+# Databsae
+*.db
 # Spyder project settings
 .spyderproject
 .spyproject
