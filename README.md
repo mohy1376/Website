@@ -1,6 +1,6 @@
 # Website
 
-Website built with Django
+Website built with Django and django-CMS
 
 ## Installation
 
@@ -30,7 +30,8 @@ pip install -r requirements.txt
 first migrations and then running the server
 ```bash
 python manage.py migrate
+python manage.py createsuperuser
 python manage.py runserver
 ```
 
-enjoy and feel free to leave message <3
+enjoy and feel free to leave a message <3
