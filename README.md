@@ -33,5 +33,19 @@ python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
 ```
+there are 5 templates :
+``` text
+about.html
+blog.html
+home.html
+media.html
+portfolio.html
+```
+if you make About Us page then it's slug must be ```/about``` . you can change its template in ``` comment/about.html```
+
+```home.html``` is for Homepage and three others can use aldryn_newsblog app with different configurations.
+
+you can use search placeholder with article_search plugin in ```blog``` and ```media``` pages.
+
 
 enjoy and feel free to leave a message <3
