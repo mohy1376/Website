@@ -1,6 +1,6 @@
 # Website
 
-Website built with Django
+Website built with Django and django-CMS
 
 ## Installation
 
