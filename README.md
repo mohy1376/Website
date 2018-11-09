@@ -32,5 +32,8 @@ first migrations and then running the server
 python manage.py migrate
 python manage.py runserver
 ```
-
+```
+username : admin
+password : admin
+```
 enjoy and feel free to leave message <3
