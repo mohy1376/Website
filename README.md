@@ -41,7 +41,7 @@ home.html
 media.html
 portfolio.html
 ```
-if you make About Us page then it's slug must be ```/about``` . you can change its template in ``` comment/about.html```
+if you want to make About Us page then it's slug must be ```/about``` . you can change its template in ``` comment/about.html```
 
 ```home.html``` is for Homepage and three others can use aldryn_newsblog app with different configurations.
 
