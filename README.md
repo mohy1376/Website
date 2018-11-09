@@ -30,10 +30,8 @@ pip install -r requirements.txt
 first migrations and then running the server
 ```bash
 python manage.py migrate
+python manage.py createsuperuser
 python manage.py runserver
 ```
-```
-username : admin
-password : admin
-```
+
 enjoy and feel free to leave a message <3
