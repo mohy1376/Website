@@ -1,0 +1,107 @@
+{% load i18n staticfiles thumbnail cms_tags apphooks_config_tags %}
+
+{% if not detail_view %}
+<div class="col-lg-6 
+{% if not article.id|divisibleby:2 %} order-lg-2 {% endif %} 
+text-white showcase-img" style="background-image: url( '{% thumbnail article.featured_image 800x450 crop subject_location=article.featured_image.subject_location %}');"></div>
+
+
+<div class="col-lg-6
+{% if not article.id|divisibleby:2 %} order-lg-1   {% endif %}
+my-auto showcase-text">
+
+    <h2>{% render_model article "title" %}</h2>
+    <div class="lead mb-0">{% render_model article "lead_in" %}</div>
+
+    <div id="hodler">
+        <div class="button">
+            <p class="btnText">
+                <a href="{% namespace_url 'article-detail' article.slug namespace=namespace default='' %}">READ MORE...</a>
+            </p>
+            <div class="btnTwo">
+                <p class="btnText2">GO!</p>
+            </div>
+        </div>
+    </div>
+    {% if article.tags %}
+    <p class="lead mb-0 tags">
+        {% for tag in article.tags.all %}
+        <a class="lead mb-0" href="{% namespace_url 'article-list-by-tag' tag=tag.slug namespace=namespace default='' %}">
+            {{ tag.name }} </a>
+        <span style="margin-right:15px;"></span>
+        {% endfor %}
+    </p>
+    {% endif %}
+
+    {% if article.categories.exists %}
+    <p class="lead mb-0 tags">
+        {% for category in article.categories.all %}
+        <a class="lead mb-0" href="{% namespace_url 'article-list-by-category' category.slug namespace=namespace default='' %}">{{
+            category.name }}</a>
+        {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    {% endif %}
+
+    <time datetime="{{ article.publishing_date }}">{{ article.publishing_date|date }}</time>
+</div>
+
+{% endif %}
+
+
+{% if detail_view %}
+<div class="container">
+<article class=" mt-5 article 
+    {% if article.is_featured %} featured{% endif %}
+    {% if not article.published %} unpublished{% endif %}">
+
+    {# The image is only shown on the detail view by using the condition "and detail_view" #}
+    {% if article.featured_image_id and detail_view %}
+    <p class="text-center">
+        <img src="{% thumbnail article.featured_image 800x450 crop subject_location=article.featured_image.subject_location %}"
+            alt="{{ article.featured_image.alt }}">
+    </p>
+
+    {% endif %}
+
+
+    <h2>
+        {% render_model article "title" %}
+    </h2>
+
+    <div class="lead mb-0">{% render_model article "lead_in" %}</div>
+
+
+    <time class="lead mb-5" datetime="{{ article.publishing_date }}">{{ article.publishing_date|date }}</time>
+
+    
+   
+    {% include "aldryn_newsblog/includes/author.html" with author=article.author %}
+    <span class="mb-4"></span>
+    {% if article.categories.exists %}
+    <p>
+        {% for category in article.categories.all %}
+        <a href="{% namespace_url 'article-list-by-category' category.slug namespace=namespace default='' %}">{{
+            category.name }}</a>
+        {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    {% endif %}
+
+    {% if article.tags %}
+    <p class="lead mb-0 tags">
+        {% for tag in article.tags.all %}
+        <a class="lead mb-0" href="{% namespace_url 'article-list-by-tag' tag=tag.slug namespace=namespace default='' %}">
+            {{ tag.name }} </a>
+        <span style="margin-right:15px;"></span>
+        {% endfor %}
+    </p>
+    {% endif %}
+
+   
+    {% render_placeholder article.content language placeholder_language %}
+   
+
+</article>
+</div>
+{% endif %}
