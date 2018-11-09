@@ -11,4 +11,4 @@ class comment(models.Model):
     email= models.EmailField()
     
     def __str__(self):
-        return self.text
+        return (self.name,self.text)
