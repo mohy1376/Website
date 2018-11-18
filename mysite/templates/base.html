@@ -26,6 +26,7 @@
     <link href="{% static 'css/site.css' %}" rel="stylesheet">
 
     {% render_block "css" %}
+    
 </head>
 
 <body>
@@ -117,6 +118,8 @@
 
     <script src="{% static 'js/site.js'%}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    
+    {% block javascript %} {% endblock javascript %}
 
     {% render_block "js" %}
 </body>
