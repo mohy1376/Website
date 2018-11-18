@@ -21,8 +21,10 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),  # NOQA
-    url(r'^', include('comment.urls', namespace='comment')), 
+    url(r'^', include('contact.urls', namespace='contact')), 
+    url(r'^comments/', include('django_comments.urls')),
     url(r'^', include('cms.urls')),
+    
 
 )
 
