@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% load cms_tags menu_tags sekizai_tags staticfiles comments %}
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block javascript %}
+    <script type="text/javascript">
+
+        function show_reply_form(event) {
+            var $this = $(this);
+            var comment_id = $this.data('comment-id');
+
+            $('#id_parent').val(comment_id);
+            $('#form-comment').insertAfter($this.closest('.comment'));
+        };
+
+        function cancel_reply_form(event) {
+            $('#id_comment').val('');
+            $('#id_parent').val('');
+            $('#form-comment').appendTo($('#wrap_write_comment'));
+        }
+
+        $.fn.ready(function() {
+            $('.comment_reply_link').click(show_reply_form);
+            $('#cancel_reply').click(cancel_reply_form);
+        })
+
+    </script>
+{% endblock %}
+{% block content%}
+
+    {% for message in messages %}
+    {% get_comment_count for message as comment_count %}
+        <h1>{{ message.title }}</h1>
+        <h4>{{ message.text }}</h4>
+
+       
+ 
+
+        <h2>comment form</h2>
+        <div class="comments_wrapper" id="comments">
+                {% render_comment_list for message %}
+        
+                <div id="wrap_write_comment">
+                    {% render_comment_form for message %}
+                </div>
+            </div>
+    {% endfor %}
+
+{% endblock content %}
