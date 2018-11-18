@@ -1,6 +1,32 @@
-{% load i18n staticfiles thumbnail cms_tags apphooks_config_tags %}
+{% load i18n sekizai_tags  staticfiles thumbnail cms_tags apphooks_config_tags comments threadedcomments_tags %}
+
+{% addtoblock "js" %}
+    <script type="text/javascript">
+
+        function show_reply_form(event) {
+            var $this = $(this);
+            var comment_id = $this.data('comment-id');
+
+            $('#id_parent').val(comment_id);
+            $('#form-comment').insertAfter($this.closest('.comment'));
+        };
+
+        function cancel_reply_form(event) {
+            $('#id_comment').val('');
+            $('#id_parent').val('');
+            $('#form-comment').appendTo($('#wrap_write_comment'));
+        }
+
+        $.fn.ready(function() {
+            $('.comment_reply_link').click(show_reply_form);
+            $('#cancel_reply').click(cancel_reply_form);
+        })
+
+    </script>
+ {% endaddtoblock %}
 
 {% if not detail_view %}
+
 <div class="col-lg-6 
 {% if not article.id|divisibleby:2 %} order-lg-2 {% endif %} 
 text-white showcase-img" style="background-image: url( '{% thumbnail article.featured_image 800x450 crop subject_location=article.featured_image.subject_location %}');"></div>
@@ -32,7 +58,11 @@ my-auto showcase-text">
         {% endfor %}
     </p>
     {% endif %}
-
+    {% get_comment_list for article as comment_list %}
+<div class="comments_length">
+        <p>{{ comment_list|length }} Comments</p>
+    </div>
+    
     {% if article.categories.exists %}
     <p class="lead mb-0 tags">
         {% for category in article.categories.all %}
@@ -50,6 +80,7 @@ my-auto showcase-text">
 
 
 {% if detail_view %}
+
 <div class="container">
 <article class=" mt-5 article 
     {% if article.is_featured %} featured{% endif %}
@@ -103,5 +134,38 @@ my-auto showcase-text">
    
 
 </article>
+
+<div class="comments_wrapper" id="comments">
+        <h5>Comments : </h5>
+        {% render_comment_list for article %}
+
+        <div  id="wrap_write_comment">
+            <h6>Write your comment below : </h6>
+                {% if user.is_authenticated %}
+                {% get_comment_form for article as form %}
+                <div id="form-comment">
+                <form action="{% comment_form_target %}" method="POST">
+                {% csrf_token %}
+                
+                {{ form.comment }}
+                {{ form.honeypot }}
+                {{ form.content_type }}
+                {{ form.object_pk }}
+                {{ form.timestamp }}
+                {{ form.security_hash }}
+                {{ form.parent }}
+                 <br>   
+
+                <input type="hidden" name="next" value="{{request.path|urlencode}}" />
+                <!-- <input type="submit" value="Add comment"  /> -->
+                <button type="submit" id="id_submit">Add comment</button>
+                </form>
+            </div>
+            {% else %}
+                <p>Please <a href="">log in</a> to leave a comment.</p>
+            {% endif %}
+        </div>
+    </div>
+
 </div>
 {% endif %}
