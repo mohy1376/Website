@@ -1,48 +1,37 @@
-{% extends "base.html" %} {% load cms_tags menu_tags sekizai_tags staticfiles comments %}
-{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+{% load i18n sekizai_tags  staticfiles thumbnail cms_tags apphooks_config_tags comments threadedcomments_tags %}
 
-{% block javascript %}
-    <script type="text/javascript">
+<div class="comments_wrapper" id="comments">
+    <h5>Comments : </h5>
+    {% render_comment_list for article %}
 
-        function show_reply_form(event) {
-            var $this = $(this);
-            var comment_id = $this.data('comment-id');
+    <div  id="wrap_write_comment">
+      
+            {% if user.is_authenticated %}
+            {% get_comment_form for article as form %}
+            <div id="form-comment">
+                    <h6>Write your comment below : </h6>
+            <form id = 'commentTarget' action="{% comment_form_target %}" method="POST">
+            {% csrf_token %}
+            
+            {{ form.comment }}
+            {{ form.honeypot }}
+            {{ form.content_type }}
+            {{ form.object_pk }}
+            {{ form.timestamp }}
+            {{ form.security_hash }}
+            {{ form.parent }}
+             <br>   
 
-            $('#id_parent').val(comment_id);
-            $('#form-comment').insertAfter($this.closest('.comment'));
-        };
+            <input type="hidden" name="next" value="{{request.path|urlencode}}" />
+            <!-- <input type="submit" value="Add comment"  /> -->
+            <button type="submit" id="id_submit">Add comment</button>
+            </form>
+        </div>
+        {% else %}
+          <p> Please <a class=" btnLog text-white"><i class="fa fas fa-user "></i></a> to leave a comment.</p>
+        {% endif %}
+    </div>
+</div>
 
-        function cancel_reply_form(event) {
-            $('#id_comment').val('');
-            $('#id_parent').val('');
-            $('#form-comment').appendTo($('#wrap_write_comment'));
-        }
-
-        $.fn.ready(function() {
-            $('.comment_reply_link').click(show_reply_form);
-            $('#cancel_reply').click(cancel_reply_form);
-        })
-
-    </script>
-{% endblock %}
-{% block content%}
-
-    {% for message in messages %}
-    {% get_comment_count for message as comment_count %}
-        <h1>{{ message.title }}</h1>
-        <h4>{{ message.text }}</h4>
-
-       
- 
-
-        <h2>comment form</h2>
-        <div class="comments_wrapper" id="comments">
-                {% render_comment_list for message %}
-        
-                <div id="wrap_write_comment">
-                    {% render_comment_form for message %}
-                </div>
-            </div>
-    {% endfor %}
-
-{% endblock content %}
+</div>
+<div id="snackbar">Your comment sents successfully</div>

@@ -11,20 +11,5 @@ class comment(models.Model):
     email= models.EmailField()
     
     def __str__(self):
-        return (self.name,self.text)
+        return self.text
 
-
-class Message(models.Model):
-
-    title = models.CharField(max_length = 120)
-    text = models.TextField()
-
-    # class Meta:
-    #     verbose_name = "message"
-    # #     verbose_name_plural = "messages"
-    # def get_absolute_url(self):
-    #     return reverse('commview', args=(self.pk,))
-    def __str__(self):
-        return self.title
-
-    
