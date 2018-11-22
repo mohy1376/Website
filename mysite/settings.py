@@ -161,6 +161,7 @@ COMMENTS_APP = 'threadedcomments'
 LANGUAGES = (
     # Customize this
     ('en', gettext('en')),
+    ('fa', gettext('fa')),
 )
 
 
@@ -174,6 +175,14 @@ CMS_LANGUAGES = {
             'public': True,
             'hide_untranslated': False,
         },
+        {
+            'code': 'fa',
+            'name': gettext('fa'),
+            'fallbacks': 'en',
+            'public': True,
+        },
+
+
     ],
     'default': {
         'redirect_on_fallback': True,
