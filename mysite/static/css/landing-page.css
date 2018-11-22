@@ -42,6 +42,12 @@ header.masthead h1 {
 }
 
 @media (min-width: 768px) {
+  .logwindow {
+    display: none;
+    position: fixed;
+    top: 5em;
+    left: 0em;
+}
   header.masthead {
     padding-top: 12rem;
     padding-bottom: 15.5rem;

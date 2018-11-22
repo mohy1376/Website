@@ -147,20 +147,22 @@ INSTALLED_APPS = (
     'taggit',
     'mysite',
     'aldryn_newsblog',
-    'comment'
-    # 'pinax.comments',
-    # 'threadedcomments',
-    # 'django_comments',
-    
+    'contact',
+    'threadedcomments',
+    'django_comments'
+
+
 
 
 )
+
+COMMENTS_APP = 'threadedcomments'
 
 LANGUAGES = (
     # Customize this
     ('en', gettext('en')),
 )
-COMMENTS_APP = 'threadedcomments'
+
 
 CMS_LANGUAGES = {
     # Customize this
@@ -187,7 +189,6 @@ CMS_TEMPLATES = (
     ('blog.html', 'Blog'),
     ('media.html', 'Media'),
     ('portfolio.html', 'Portfolio'),
-
 
 )
 

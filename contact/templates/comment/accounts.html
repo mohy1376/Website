@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load cms_tags staticfiles %}
+
+{% block title %}{% page_attribute "page_title" %} {% endblock title %}
+
+{% block content %}
+
+<section>
+    <div class="text-center">
+        <h1>
+            Sign in or Sign up
+        </h1>
+    </div>
+    <div class="container  form-structor">
+            <div class="signup">
+                <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
+                <form action="" method="POST">
+                
+                <div class="form-holder">
+                    
+                        {% csrf_token %}
+                        
+                           
+                            <input class="input" type="text" name="username" placeholder="username" required>
+                        
+                            <input class="input" type="password" name="password" placeholder="Password" required>
+                      
+                            <input  class="input" type="email" name="email"  placeholder="Email">
+                     
+                       
+                </div>
+                <input  class="submit-btn" type="submit" value=" Submit">
+                <input  class="submit-btn" type="reset" value="Reset">
+            </form>
+                
+                
+            </div>
+            <div class="login slide-up">
+                <div class="center">
+                    <h2 class="form-title" id="login"><span>or</span>Log in</h2>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                    <div class="form-holder">
+                        <input type="text" class="input"  name="username1" placeholder="username" required>
+                        <input type="password" class="input" name="password1" placeholder="Password" required>
+        
+                        
+                    </div>
+                    
+                    <input class="submit-btn" type="submit" value="Log in">
+                    <input class="submit-btn" type="reset" value="Reset">
+                </form>
+                    
+                </div>
+            </div>
+        </div>
+            
+</section>
+
+
+
+{% endblock content%}

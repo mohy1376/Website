@@ -1,0 +1,37 @@
+{% load i18n sekizai_tags  staticfiles thumbnail cms_tags apphooks_config_tags comments threadedcomments_tags %}
+
+<div class="comments_wrapper" id="comments">
+    <h5>Comments : </h5>
+    {% render_comment_list for article %}
+
+    <div  id="wrap_write_comment">
+      
+            {% if user.is_authenticated %}
+            {% get_comment_form for article as form %}
+            <div id="form-comment">
+                    <h6>Write your comment below : </h6>
+            <form id = 'commentTarget' action="{% comment_form_target %}" method="POST">
+            {% csrf_token %}
+            
+            {{ form.comment }}
+            {{ form.honeypot }}
+            {{ form.content_type }}
+            {{ form.object_pk }}
+            {{ form.timestamp }}
+            {{ form.security_hash }}
+            {{ form.parent }}
+             <br>   
+
+            <input type="hidden" name="next" value="{{request.path|urlencode}}" />
+            <!-- <input type="submit" value="Add comment"  /> -->
+            <button type="submit" id="id_submit">Add comment</button>
+            </form>
+        </div>
+        {% else %}
+          <p> Please <a class=" btnLog text-white"><i class="fa fas fa-user "></i></a> to leave a comment.</p>
+        {% endif %}
+    </div>
+</div>
+
+</div>
+<div id="snackbar">Your comment sents successfully</div>
