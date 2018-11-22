@@ -169,21 +169,16 @@ CMS_LANGUAGES = {
     # Customize this
     1: [
         {
-            'code': 'en',
-            'name': gettext('en'),
-            'redirect_on_fallback': True,
-            'public': True,
-            'hide_untranslated': False,
-        },
-        {
             'code': 'fa',
-            'name': gettext('fa'),
-            'fallbacks': 'en',
+            'name': gettext('Farsi'),
+            'fallbacks': ['en', 'fr'],
             'public': True,
+            'hide_untranslated': True,
+            'redirect_on_fallback':False,
         },
-
 
     ],
+
     'default': {
         'redirect_on_fallback': True,
         'public': True,
