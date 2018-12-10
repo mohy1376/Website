@@ -2,7 +2,7 @@ $(document).ready(function() {
   // serch icon hide
   var pathname = window.location.pathname; // Returns path only
 
-  if (pathname == "/en/blog/" || pathname == "/en/media/") {
+  if (pathname == "/fa/articles/" || pathname == "/fa/news/") {
     
     $("#btnSearch").show(0);
   }

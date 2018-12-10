@@ -189,7 +189,7 @@ CMS_LANGUAGES = {
 CMS_TEMPLATES = (
     # Customize this
     ('home.html', 'Home'),
-    ('about.html', 'About'),
+    ('comment/about.html', 'About'),
     ('blog.html', 'Blog'),
     ('media.html', 'Media'),
     ('portfolio.html', 'Portfolio'),
